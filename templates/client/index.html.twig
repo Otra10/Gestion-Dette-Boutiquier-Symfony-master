@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mx-auto p-6">
+        <nav class="bg-gray-800 p-4 mb-6 rounded-lg">
+            <ul class="flex space-x-4">
+                <li><a href="#" class="text-white hover:text-gray-300">Accueil</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Clients</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Rapports</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Paramètres</a></li>
+            </ul>
+        </nav>
+
+        <h1 class="text-3xl font-bold mb-6">Clients</h1>
+
+        <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Recherche de Clients</h2>
+            {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {{ form_widget(form) }}
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Rechercher</button>
+            {{ form_end(form) }}
+        </div>
+
+        <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+            <table class="min-w-full bg-white">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="py-2 px-4 border-b">Surname</th>
+                        <th class="py-2 px-4 border-b">Adresse</th>
+                        <th class="py-2 px-4 border-b">Téléphone</th>
+                      
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="py-2 px-4 border-b">{{ client.surname }}</td>
+                            <td class="py-2 px-4 border-b">{{ client.address }}</td>
+                            <td class="py-2 px-4 border-b">{{ client.telephone }}</td>
+                            
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
